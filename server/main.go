@@ -4,14 +4,13 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/maulerrr/book-addict-server/server/DB"
-	"github.com/maulerrr/book-addict-server/server/helpers"
 	"github.com/maulerrr/book-addict-server/server/routes"
 	"log"
 	"os"
 )
 
 func main() {
-	helpers.SetEnvironment()
+	//helpers.SetEnvironment()
 
 	app := gin.Default()
 
