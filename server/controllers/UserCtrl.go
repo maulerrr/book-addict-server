@@ -19,7 +19,7 @@ func GetAllUsers(context *gin.Context) {
 }
 
 func GetUserById(context *gin.Context) {
-	id, err := strconv.Atoi(context.Param("id"))
+	id, err := strconv.Atoi(context.Param("user_id"))
 
 	if err != nil {
 		helpers.SendMessageWithStatus(context, "Invalid ID Format", 400)
@@ -72,7 +72,7 @@ func CreateUser(context *gin.Context) {
 }
 
 func DeleteUserById(context *gin.Context) {
-	id, err := strconv.Atoi(context.Param("id"))
+	id, err := strconv.Atoi(context.Param("user_id"))
 
 	if err != nil {
 		helpers.SendMessageWithStatus(context, "Invalid ID format", 400)
