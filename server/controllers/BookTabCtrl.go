@@ -7,6 +7,7 @@ import (
 	"github.com/maulerrr/book-addict-server/server/helpers"
 	"github.com/maulerrr/book-addict-server/server/models"
 	"gorm.io/gorm"
+	"log"
 	"net/http"
 	"strconv"
 )
@@ -25,6 +26,8 @@ func AddBookTab(context *gin.Context) {
 		UserID:   json.UserID,
 		Finished: false,
 	}
+
+	log.Println(newBookTab)
 
 	found := models.BookTab{}
 	query := models.BookTab{
@@ -50,7 +53,7 @@ func DeleteBookTabById(context *gin.Context) {
 		return
 	}
 
-	bookTab, query := models.BookTab{}, models.BookTab{ID: id}
+	bookTab, query := models.BookTab{}, models.BookTab{BookID: id}
 
 	err = DB.DB.First(&bookTab, &query).Error
 	if err == gorm.ErrRecordNotFound {
