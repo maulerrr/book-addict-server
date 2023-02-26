@@ -1,0 +1,56 @@
+.exerciseWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background-color: #000000;
+    padding: 2rem;
+    border-radius: 1rem;
+    max-width: 300px;
+    margin: 1rem;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-shadow: black 0px 0px 10px;
+}
+/*.exerciseWrapper :hover{*/
+/*    white-space: normal;*/
+/*    overflow: visible;*/
+/*    width: 100%;*/
+/*    z-index: 1;*/
+/*}*/
+/*.exerciseWrapper p{*/
+/*    white-space: nowrap;*/
+/*    overflow: hidden;*/
+/*    text-overflow: ellipsis;*/
+/*    color: white;*/
+/*}*/
+
+.textWrapper{
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: space-between;
+}
+.textWrapper p{
+    margin: 0;
+    align-self: center;
+}
+.exerciseWrapper img{
+    border-radius: 1rem;
+}
+
+.exerciseWrapper button{
+    background-color: #8a6161;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: bolder;
+}
+
+.Buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}

@@ -1,0 +1,10 @@
+.motto{
+    font-size: 3rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: black;
+}
+.mottoWrapper{
+    margin-top: 7rem;
+    margin-bottom: 3rem;
+}

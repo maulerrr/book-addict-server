@@ -1,0 +1,52 @@
+.actionContainer{
+    display:flex;
+
+    width: 52%;
+    
+    word-wrap: break-word;
+    padding: 2rem;
+    margin: 2rem;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.actionBtnWrapper{
+    display: flex;
+
+    padding: 1.5rem;
+
+    background-color: #000000;
+    border-radius: 1rem;
+
+}
+.actionBtn{
+    display: inline-flex;
+    align-items: center;
+}
+.actionBtnWrapper:hover{
+    background-color: #8a6161;
+}
+.actionBtn h1{
+    width: 200px;
+    font-size: 1.5rem;
+    font-weight: normal;
+    margin: 0 !important;
+    padding: 0 !important;
+
+    color: white;
+}
+.arrow{
+    width: 60px;
+}
+
+.actionText{
+    width: 300px;
+}
+
+.mainText{
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+.secondaryText{
+    font-weight: 400;
+}

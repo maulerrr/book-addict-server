@@ -1,0 +1,71 @@
+.DetailsContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.Wrapper{
+    margin-top: 2rem;
+    background-color: #314154;
+    border-radius: 1rem;
+    padding: 3rem;
+    display: block;
+
+    box-shadow: black 0px 0px 10px;
+}
+.Wrapper h1{
+    color: white;
+}
+.Wrapper p {
+    color: white;
+    font-size: 1.2rem;
+}
+.MainTxt{
+    font-size: 4rem;
+}
+.MainTxt p{
+    font-weight: lighter;
+}
+.WrapperV{
+    margin-top: 2rem;
+    background-color: #314154;
+    border-radius: 1rem;
+    padding: 3rem;
+    display: flex;
+
+    flex-direction: column;
+    justify-content: center;
+    /*align-items: center;*/
+
+    box-shadow: black 0px 0px 10px;
+}
+.WrapperV h1{
+    color: white;
+    margin: 0.5rem 0;
+}
+.WrapperV p {
+    color: white;
+    font-size: 1.2rem;
+}
+.Calories{
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+.TimeRemaining{
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+.ExerciseBtn{
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    /*background-color: black;*/
+    color: white;
+    border-radius: 1rem;
+    font-size: 2rem;
+    /*box-shadow: black 0px 0px 5px;*/
+    border-style: dotted;
+}

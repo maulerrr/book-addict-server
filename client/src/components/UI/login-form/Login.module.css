@@ -1,0 +1,55 @@
+.loginWrapper{
+    max-width: 400px;
+    background-color: #8a6161;
+    border-radius: 1.7rem;
+    padding: 1rem;
+    box-shadow: black 0px 0px 10px;
+}
+
+.loginWrapper form{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.loginWrapper label{
+    color: white;
+}
+.loginWrapper input{
+    outline: none;
+
+    font-family: "Ubuntu Medium";
+    font-size: 1.2rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0.7rem;
+    border-width: 1px;
+}
+
+.btn{
+    padding: 1rem;
+    font-size: 1.2rem;
+    background-color: #000000;
+    color: white;
+    font-weight: normal;
+    border-radius: 0.7rem;
+}
+
+.AuthInput {
+    border-style: none;
+    box-shadow: inset black 0px 0px 4px 1px;
+}
+
+.Link{
+    text-decoration: underline;
+    color: white;
+}
+
+.SignUP{
+    display: inline-flex;
+    align-items: center;
+}
+.Text{
+    color: white;
+    font-weight: bold;
+}

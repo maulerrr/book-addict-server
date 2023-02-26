@@ -1,0 +1,52 @@
+.regWrapper{
+    max-width: 400px;
+    background-color: #8a6161;
+    border-radius: 1.7rem;
+    padding: 1rem;
+    box-shadow: black 0px 0px 10px;
+}
+
+.regWrapper form{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.regWrapper label{
+    color: white;
+}
+.regWrapper input{
+    outline: none;
+
+    font-family: "Ubuntu Medium";
+    font-size: 1.2rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0.7rem;
+    border-width: 1px;
+}
+
+.btn{
+    padding: 1rem;
+    font-size: 1.2rem;
+    background-color: black;
+    color: white;
+    font-weight: normal;
+    border-radius: 0.7rem;
+}
+
+.AuthInput {
+    border-style: none;
+    box-shadow: inset black 0px 0px 4px 1px;
+}
+.Text{
+    color: white;
+}
+.SignIN{
+    display: inline-flex;
+    align-items: center;
+}
+.Link{
+    color: white;
+    text-decoration: underline;
+}

@@ -1,0 +1,39 @@
+.blockWrapper{
+    display:flex;
+    background-color: rgb(138, 97, 97);
+
+    width: 52%;
+    
+    border-radius: 36px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    word-wrap: break-word;
+    padding: 2rem;
+    margin: 2rem;
+    justify-content: center;
+}
+
+
+.imageWrapper img{
+    width: 300px;
+}
+
+.textWrapper{
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    text-align: left;
+    justify-content: center;
+    padding: 0 2rem ;
+    width: 250px;
+}
+.secondaryText{
+    color: white;
+    font-weight: 300;
+    margin: 0;
+    font-size: 1.5rem;
+}
+.mainText{
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 500;
+}
