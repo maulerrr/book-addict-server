@@ -1,108 +1,98 @@
 package testings
 
 import (
+	"bytes"
+	"encoding/json"
 	"github.com/gin-gonic/gin"
+	"github.com/go-playground/assert/v2"
+	"github.com/maulerrr/book-addict-server/server/DB"
+	"github.com/maulerrr/book-addict-server/server/DTO"
+	"github.com/maulerrr/book-addict-server/server/controllers"
+	"github.com/maulerrr/book-addict-server/server/models"
+	assert2 "github.com/stretchr/testify/assert"
+	"net/http"
+	"net/http/httptest"
 	"testing"
 )
 
+func TestGetAllBookTabs(t *testing.T) {
+	DB.ConnectDB()
+	context, _ := gin.CreateTestContext(httptest.NewRecorder())
+	controllers.GetAllBookTabs(context)
+
+	assert.Equal(t, 200, context.Writer.Status())
+}
+
 func TestAddBookTab(t *testing.T) {
-	type args struct {
-		context *gin.Context
+	DB.ConnectDB()
+	context, _ := gin.CreateTestContext(httptest.NewRecorder())
+
+	newBookTab := DTO.CreateBookTabDto{
+		BookID:   1,
+		UserID:   1,
+		Finished: true,
 	}
-	tests := []struct {
-		name string
-		args args
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			AddBookTab(tt.args.context)
-		})
-	}
+	postJSON, _ := json.Marshal(newBookTab)
+
+	request, _ := http.NewRequest(http.MethodPost, "/booktabs/add", bytes.NewBuffer(postJSON))
+	request.Header.Set("Content-Type", "application/json")
+	context.Request = request
+	controllers.AddBookTab(context)
+	assert.Equal(t, 200, context.Writer.Status())
+	var book models.Book
+	DB.DB.Last(&book)
+	assert2.Greater(t, book.ID, 0)
 }
 
 func TestDeleteBookTabById(t *testing.T) {
-	type args struct {
-		context *gin.Context
+	DB.ConnectDB()
+	context, _ := gin.CreateTestContext(httptest.NewRecorder())
+
+	newBookTab := DTO.CreateBookTabDto{
+		BookID:   1,
+		UserID:   1,
+		Finished: true,
 	}
-	tests := []struct {
-		name string
-		args args
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			DeleteBookTabById(tt.args.context)
-		})
-	}
+
+	DB.DB.Create(&newBookTab)
+	controllers.DeleteBookTabById(context)
+
+	var booktab models.BookTab
+	DB.DB.First(&booktab, newBookTab)
 }
 
-func TestGetAllBookTabs(t *testing.T) {
-	type args struct {
-		context *gin.Context
-	}
-	tests := []struct {
-		name string
-		args args
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			GetAllBookTabs(tt.args.context)
-		})
-	}
-}
-
-func TestGetFavorites(t *testing.T) {
-	type args struct {
-		context *gin.Context
-	}
-	tests := []struct {
-		name string
-		args args
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			GetFavorites(tt.args.context)
-		})
-	}
-}
-
-func TestGetFinishedBooks(t *testing.T) {
-	type args struct {
-		context *gin.Context
-	}
-	tests := []struct {
-		name string
-		args args
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			GetFinishedBooks(tt.args.context)
-		})
-	}
-}
-
-func TestUpdateBookTab(t *testing.T) {
-	type args struct {
-		context *gin.Context
-	}
-	tests := []struct {
-		name string
-		args args
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			UpdateBookTab(tt.args.context)
-		})
-	}
-}
+//func TestGetFinished(t *testing.T) {
+//	DB.ConnectDB()
+//
+//	type testcase struct {
+//		name     string
+//		param    gin.Param
+//		expected int
+//	}
+//	testcases := []testcase{
+//		{
+//			name:     "Test:Success",
+//			param:    gin.Param{Key: "finished", Value:},
+//			expected: 200,
+//		},
+//		{
+//			name:     "Test: Invalid ID",
+//			param:    gin.Param{Key: "id", Value: ""},
+//			expected: 400,
+//		},
+//		{
+//			name:     "Test:Not found",
+//			param:    gin.Param{Key: "id", Value: strconv.Itoa(-1)},
+//			expected: 404,
+//		},
+//	}
+//	for _, tc := range testcases {
+//		t.Run(tc.name, func(t *testing.T) {
+//			recorder := httptest.NewRecorder()
+//			context, _ := gin.CreateTestContext(recorder)
+//			context.Params = append(context.Params, tc.param)
+//			controllers.GetBookTab(context)
+//			assert.Equal(t, tc.expected, recorder.Code)
+//		})
+//	}
+//}
