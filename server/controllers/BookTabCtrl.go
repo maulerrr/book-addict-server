@@ -93,6 +93,11 @@ func GetFinishedBooks(context *gin.Context) {
 		helpers.SendMessageWithStatus(context, result.Error.Error(), 500)
 		return
 	}
+
+	if len(finishedBooks) == 0 {
+		helpers.SendMessageWithStatus(context, "No finished books", 404)
+		return
+	}
 	context.JSON(200, finishedBooks)
 }
 

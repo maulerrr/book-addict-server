@@ -61,8 +61,8 @@ func TestLogin(t *testing.T) {
 			name:    "Test: Incorrect Password",
 			payload: DTO.LoginDto{Email: "test@mail.ru", Password: "testtest"},
 			expected: response{
-				Code:    401,
-				Message: "Password is not correct",
+				Code:    403,
+				Message: "Passwords does not match",
 			},
 		},
 	}
@@ -147,7 +147,7 @@ func TestSignup(t *testing.T) {
 			payload: DTO.SignupDto{FullName: "test1", Email: "test1", Password: "testtest"},
 			expected: response{
 				Code:    400,
-				Message: "Email is not valid",
+				Message: "Invalid Email Address",
 			},
 		},
 	}

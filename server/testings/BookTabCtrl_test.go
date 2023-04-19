@@ -12,6 +12,7 @@ import (
 	assert2 "github.com/stretchr/testify/assert"
 	"net/http"
 	"net/http/httptest"
+	"strconv"
 	"testing"
 )
 
@@ -61,38 +62,41 @@ func TestDeleteBookTabById(t *testing.T) {
 	DB.DB.First(&booktab, newBookTab)
 }
 
-//func TestGetFinished(t *testing.T) {
-//	DB.ConnectDB()
-//
-//	type testcase struct {
-//		name     string
-//		param    gin.Param
-//		expected int
-//	}
-//	testcases := []testcase{
-//		{
-//			name:     "Test:Success",
-//			param:    gin.Param{Key: "finished", Value:},
-//			expected: 200,
-//		},
-//		{
-//			name:     "Test: Invalid ID",
-//			param:    gin.Param{Key: "id", Value: ""},
-//			expected: 400,
-//		},
-//		{
-//			name:     "Test:Not found",
-//			param:    gin.Param{Key: "id", Value: strconv.Itoa(-1)},
-//			expected: 404,
-//		},
-//	}
-//	for _, tc := range testcases {
-//		t.Run(tc.name, func(t *testing.T) {
-//			recorder := httptest.NewRecorder()
-//			context, _ := gin.CreateTestContext(recorder)
-//			context.Params = append(context.Params, tc.param)
-//			controllers.GetBookTab(context)
-//			assert.Equal(t, tc.expected, recorder.Code)
-//		})
-//	}
-//}
+func TestGetFinished(t *testing.T) {
+	DB.ConnectDB()
+
+	type testcase struct {
+		name     string
+		param    gin.Param
+		expected int
+		finished bool
+	}
+	testcases := []testcase{
+		{
+			name:     "Test:Success",
+			param:    gin.Param{Key: "id", Value: strconv.Itoa(2)},
+			expected: 200,
+			finished: true,
+		},
+		{
+			name:     "Test: Invalid ID",
+			param:    gin.Param{Key: "id", Value: ""},
+			expected: 400,
+			finished: true,
+		},
+		{
+			name:     "Test:Not found",
+			param:    gin.Param{Key: "id", Value: strconv.Itoa(2)},
+			expected: 404,
+		},
+	}
+	for _, tc := range testcases {
+		t.Run(tc.name, func(t *testing.T) {
+			recorder := httptest.NewRecorder()
+			context, _ := gin.CreateTestContext(recorder)
+			context.Params = append(context.Params, tc.param)
+			controllers.GetFinishedBooks(context)
+			assert.Equal(t, tc.expected, recorder.Code)
+		})
+	}
+}

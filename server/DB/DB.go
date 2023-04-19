@@ -13,7 +13,7 @@ func ConnectDB() {
 	var err error
 	//dsn := os.Getenv("DATABASE_DSN")
 
-	dsn := "postgres/localhost:5432/postgres:2003/bookstore?sslmode=disable"
+	dsn := "postgres://postgres:2003@localhost:5432/bookstore?sslmode=disable"
 
 	log.Println(dsn)
 

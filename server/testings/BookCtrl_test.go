@@ -51,7 +51,8 @@ func TestDeleteBookById(t *testing.T) {
 	DB.ConnectDB()
 	context, _ := gin.CreateTestContext(httptest.NewRecorder())
 
-	newBook := DTO.CreateBookDto{
+	newBook := models.Book{
+		ID:          1,
 		Title:       "test title",
 		Author:      "test author",
 		Price:       1,
@@ -59,6 +60,8 @@ func TestDeleteBookById(t *testing.T) {
 		Img:         "test img",
 	}
 	DB.DB.Create(&newBook)
+
+	context.Params = append(context.Params, gin.Param{Key: "id", Value: strconv.Itoa(1)})
 	controllers.DeleteBookById(context)
 
 	var book models.Book
