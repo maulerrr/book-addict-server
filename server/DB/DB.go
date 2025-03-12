@@ -1,19 +1,19 @@
 package DB
 
 import (
+	"log"
+	"os"
+
 	"github.com/maulerrr/book-addict-server/server/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"log"
 )
 
 var DB *gorm.DB
 
 func ConnectDB() {
 	var err error
-	//dsn := os.Getenv("DATABASE_DSN")
-
-	dsn := "postgres://postgres:2003@localhost:5432/bookstore?sslmode=disable"
+	dsn := os.Getenv("DATABASE_DSN")
 
 	log.Println(dsn)
 

@@ -1,21 +1,23 @@
 package main
 
 import (
+	"log"
+	"os"
+
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/maulerrr/book-addict-server/server/DB"
+	"github.com/maulerrr/book-addict-server/server/helpers"
 	"github.com/maulerrr/book-addict-server/server/routes"
-	"log"
-	"os"
 )
 
 func main() {
-	//helpers.SetEnvironment()
+	helpers.SetEnvironment()
 
 	app := gin.Default()
 
 	app.Use(cors.New(cors.Config{
-		AllowOrigins: []string{"*"},
+		AllowOrigins: []string{"http://127.0.0.1"},
 		AllowMethods: []string{"GET", "POST", "PUT", "DELETE"},
 		AllowHeaders: []string{"Origin", "Content-Type", "Accept", "Authorization"},
 	}))
