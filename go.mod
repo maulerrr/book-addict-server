@@ -1,8 +1,7 @@
 module github.com/maulerrr/book-addict-server
 
 go 1.21.0
-
-toolchain go1.23.0
+toolchain go1.24.1
 
 require (
 	github.com/badoux/checkmail v1.2.1
@@ -11,7 +10,7 @@ require (
 	github.com/gin-gonic/gin v1.10.0
 	github.com/go-playground/assert/v2 v2.2.0
 	github.com/stretchr/testify v1.10.0
-	golang.org/x/crypto v0.31.0
+	golang.org/x/crypto v0.35.0
 	gorm.io/driver/postgres v1.4.8
 	gorm.io/gorm v1.24.5
 )
@@ -24,7 +23,7 @@ require (
 	github.com/google/go-cmp v0.5.9 // indirect
 	github.com/jackc/puddle/v2 v2.2.1 // indirect
 	github.com/kr/pretty v0.3.1 // indirect
-	golang.org/x/sync v0.10.0 // indirect
+	golang.org/x/sync v0.11.0 // indirect
 )
 
 require (
@@ -52,9 +51,9 @@ require (
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ugorji/go/codec v1.2.12 // indirect
 	golang.org/x/arch v0.12.0 // indirect
-	golang.org/x/net v0.33.0 // indirect
-	golang.org/x/sys v0.28.0 // indirect
-	golang.org/x/text v0.21.0 // indirect
+	golang.org/x/net v0.36.0 // indirect
+	golang.org/x/sys v0.30.0 // indirect
+	golang.org/x/text v0.22.0 // indirect
 	google.golang.org/protobuf v1.36.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
