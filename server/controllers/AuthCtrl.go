@@ -1,17 +1,18 @@
 package controllers
 
 import (
+	"log"
+	"os"
+	"time"
+
 	"github.com/badoux/checkmail"
-	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
+	"github.com/golang-jwt/jwt/v5"
 	"github.com/maulerrr/book-addict-server/server/DB"
 	"github.com/maulerrr/book-addict-server/server/DTO"
 	"github.com/maulerrr/book-addict-server/server/helpers"
 	"github.com/maulerrr/book-addict-server/server/models"
 	"gorm.io/gorm"
-	"log"
-	"os"
-	"time"
 )
 
 func Login(context *gin.Context) {
@@ -31,7 +32,7 @@ func Login(context *gin.Context) {
 	}
 
 	if !helpers.ComparePasswords(user.Password, credentials.Password) {
-		helpers.SendMessageWithStatus(context, "Passwords does not match", 403)
+		helpers.SendMessageWithStatus(context, "Passwords do not match", 403)
 		return
 	}
 
@@ -104,22 +105,21 @@ func Signup(context *gin.Context) {
 }
 
 func generateToken(user models.User) (string, error) {
-	expirationTime := time.Now().Add(time.Hour * 24)
+	expirationTime := time.Now().Add(24 * time.Hour)
 
 	claims := &models.Claims{
 		ID:       user.UserID,
 		Email:    user.Email,
 		FullName: user.FullName,
-		StandardClaims: jwt.StandardClaims{
-			ExpiresAt: expirationTime.Unix(),
+		RegisteredClaims: jwt.RegisteredClaims{
+			ExpiresAt: jwt.NewNumericDate(expirationTime),
 		},
 	}
 
 	jwtKey := os.Getenv("JWT_KEY")
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	tokenString, err := token.SignedString([]byte(jwtKey))
-	log.Println("jwtkey is: " + (jwtKey))
-	log.Println([]byte(jwtKey))
+	log.Println("jwtkey is: " + jwtKey)
 
 	return tokenString, err
 }

@@ -2,18 +2,17 @@ package middlewares
 
 import (
 	"errors"
-	"github.com/dgrijalva/jwt-go"
-	"github.com/gin-gonic/gin"
-	"github.com/maulerrr/book-addict-server/server/helpers"
-	"github.com/maulerrr/book-addict-server/server/models"
 	"log"
 	"os"
 	"strings"
+
+	"github.com/gin-gonic/gin"
+	"github.com/golang-jwt/jwt/v5"
+	"github.com/maulerrr/book-addict-server/server/helpers"
+	"github.com/maulerrr/book-addict-server/server/models"
 )
 
 func parseToken(tokenString string) (*models.Claims, error) {
-	// Parse the JWT token and extract the claims
-	// just to check and handle errors.
 	jwtKey := os.Getenv("JWT_KEY")
 	claims := &models.Claims{}
 
@@ -50,8 +49,6 @@ func AuthMiddleware() gin.HandlerFunc {
 
 		token := headerParts[1]
 
-		//log.Println(parseToken(token))
-
 		jwtKey := os.Getenv("JWT_KEY")
 		claims := &models.Claims{}
 
@@ -60,7 +57,7 @@ func AuthMiddleware() gin.HandlerFunc {
 		})
 
 		if err != nil {
-			if err == jwt.ErrSignatureInvalid {
+			if errors.Is(err, jwt.ErrSignatureInvalid) {
 				helpers.SendMessageWithStatus(context, "Unauthorized", 401)
 				context.Abort()
 				return

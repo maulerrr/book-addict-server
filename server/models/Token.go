@@ -1,6 +1,6 @@
 package models
 
-import "github.com/dgrijalva/jwt-go"
+import "github.com/golang-jwt/jwt/v5"
 
 type TokenResponse struct {
 	UserID   int    `json:"userID"`
@@ -14,5 +14,5 @@ type Claims struct {
 	FullName string `json:"fullName"`
 	Email    string `json:"email"`
 
-	jwt.StandardClaims
+	jwt.RegisteredClaims
 }
